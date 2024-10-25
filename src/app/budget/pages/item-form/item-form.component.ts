@@ -53,12 +53,15 @@ import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/
   }
 
   onSubmit(): void {
-    const item = {...this.fg.getRawValue(), status: ItemStatus.PENDING };
+    // const item = {...this.fg.getRawValue(), status: ItemStatus.PENDING };
+    //try add
+    const item = {...this.fg.getRawValue() };
     console.log(item)
     if (this.id) {
       this.itemService.edit(this.id, item).subscribe(() => this.onBack());
     } else {
-      this.itemService.add(item).subscribe(() => this.onBack())
+      // this.itemService.add(item).subscribe(() => this.onBack());
+      this.itemService.add(item).subscribe(() => this.fg.reset());
     }
   }
 
@@ -70,7 +73,7 @@ import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/
       return true;
     }
 
-    // init comfirm modal
+    // init confirm modal
     const initialState: ModalOptions = {
       initialState: {
         title: `Confirm to leave" ?`

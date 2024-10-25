@@ -8,3 +8,13 @@ $primary: #630091;
 .ng-invalid.ng-touched {
     @extend .is-invalid;
 }
+
+.bi-trash:hover {
+    color: red;
+}
+
+.bi-pencil:hover {
+    color: #FF4500;
+}
+
+

@@ -2,7 +2,13 @@ export enum ItemStatus {
     PENDING = 'PENDING', APPROVED = 'APPROVED', REJECTED = 'REJECTED'
   }
 
-  export type CreateItem = Omit<Item, "id">
+  // export type CreateItem = Omit<Item, "id">
+  // try add
+  export interface CreateItem {
+    title: string;
+    amount: number;
+    price: number;
+  }
 
   export type EditIem = CreateItem
   

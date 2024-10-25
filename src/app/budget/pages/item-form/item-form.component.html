@@ -1,4 +1,4 @@
-<h3 class="m-4">Item Entry / Add </h3>
+<h3 class="m-4">Item Create </h3>
 <!-- debug: {{ fg.value | json }} -->
 <hr />
 <div class="d-flex justify-content-center">
@@ -12,7 +12,6 @@
             </div>
         </div>
         <div class="mt-3">
-            <!-- {{ amount.errors | json }} -->
             <label class="form-label" for="amount">Amount</label>
             <input class="form-control" [class.is-invalid]="amount.errors && amount.touched" formControlName="amount"
                 id="amount" type="number" />

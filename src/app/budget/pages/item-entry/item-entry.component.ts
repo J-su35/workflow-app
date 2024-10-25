@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Item } from '../../models/item';
+import { Item, ItemStatus } from '../../models/item';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { map } from 'rxjs';
 import { ItemService } from '../../item.service';
@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
 import { BudgetPlanComponent } from '../../components/budget-plan/budget-plan.component';
+import { BudgetPlanService } from '../../budget-plan.service';
 
 @Component({
   selector: 'app-item-entry',
@@ -30,13 +31,15 @@ export class ItemEntryComponent {
   modalService = inject(BsModalService)
   bsModalRef?: BsModalRef;
 
+  budgetPlanService = inject(BudgetPlanService) //***add ***/
+
   constructor() {
     //fetch data from json server instead
-    this.itemService.list().subscribe((vs) => {
+    this.itemService.list().subscribe(vs => {
       this.items = vs;
       this.filterItems = vs;
+      this.updateUsed() //***add ***/
     });
-    //
     
     this.filterInput.valueChanges 
       .pipe(map((keyword) => keyword.toLocaleLowerCase())) 
@@ -66,6 +69,18 @@ export class ItemEntryComponent {
       this.filterItems = this.items
     });
   } 
+
+  //***add ***/
+  private updateUsed() {
+
+    const used = this.items
+      .filter((v) => v.status === ItemStatus.APPROVED) 
+      .map((v) => v.price) 
+      .reduce((previous, current) => (previous += current), 0);
+
+    this.budgetPlanService.updateUsed(used);
+
+  }
 }
 
 

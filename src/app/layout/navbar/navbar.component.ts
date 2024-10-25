@@ -14,8 +14,8 @@ export class NavbarComponent {
   authService = inject(AuthService);
   
   menus = [
-    { path: 'budget/item-entry', title: 'Entry' },
-    { path: 'budget/item-approval', title: 'Approval' }
+    { path: 'budget/item-entry', title: 'List' },
+    { path: 'budget/item-approval', title: 'Approve' }
   ];
 
   // add onLogout

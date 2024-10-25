@@ -1,4 +1,4 @@
-<h3 class="m-4">Item Entry</h3>
+<h3 class="m-4">Item List</h3>
 <app-budget-plan />
 <hr />
 <div class="row">
@@ -16,10 +16,10 @@
 <hr />
 <!-- add -->
 <div class="d-flex justify-content-end mb-3">
-    <button class="btn btn-primary" routerLink="/budget/item-add">Add</button>
+    <button class="btn btn-primary" routerLink="/budget/item-add">Create</button>
 </div>
 
-<table class="table table-hover" [class.table-sm]="isSmallTable">
+<table class="table table-hover table-striped" [class.table-sm]="isSmallTable">
     <thead>
         <th></th>
         <th>#</th>
@@ -32,7 +32,7 @@
         @for (item of filterItems; track item.id) {
         <tr>
             <td>
-                <i class="bi bi-pencil mx-2" routerLink="edit/{{ item.id }}"></i>
+                <i class="bi bi-pencil mx-2" routerLink="/budget/item-edit/{{ item.id }}"></i>
                 <i class="bi bi-trash mx-2" (click)="onConfirm(item)"></i>
             </td>
             <td>{{ item.id }}</td>

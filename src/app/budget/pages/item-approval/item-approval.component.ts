@@ -21,7 +21,6 @@ type ItemAction = 'Approve' | 'Reject';
 
 export class ItemApprovalComponent {
   itemService = inject(ItemService);
-  //add new 3
   budgetPlanService = inject(BudgetPlanService)
 
   items: Item[] = [];

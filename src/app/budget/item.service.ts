@@ -38,11 +38,11 @@ export class ItemService {
   }  
 
   approve(id: number) {
-    return this.httpClient.patch<Item>(`${this.URL}/${id}`, { status: ItemStatus.APPROVED });
+    return this.httpClient.patch<Item>(`${this.URL}/${id}/approve`, { status: ItemStatus.APPROVED });
   }
 
   reject(id: number) {
-    return this.httpClient.patch<Item>(`${this.URL}/${id}`, { status: ItemStatus.REJECTED });
+    return this.httpClient.patch<Item>(`${this.URL}/${id}/reject`, { status: ItemStatus.REJECTED });
   }
 }
 
